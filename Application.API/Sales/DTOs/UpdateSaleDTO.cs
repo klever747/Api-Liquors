@@ -2,11 +2,10 @@
 
 namespace Application.API.DTOs
 {
-    public class UpdateSale
+    public class UpdateSaleDTO
     {
-        [Required]
+
         public int IdSales { set; get; }
-        [Required]
         public int IdOrder { set; get; }
         public double PriceSale { set; get; }
         public double PriceDelivery { set; get; }

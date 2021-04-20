@@ -4,9 +4,7 @@ namespace Application.API.DTOs
 {
     public class CreateSaleDTO
     {
-        [Required]
-        public int IdSales { set; get; }
-        [Required]
+        public int ciClient { set; get; }
         public int IdOrder { set; get; }
         public double PriceSale { set; get; }
         public double PriceDelivery { set; get; }

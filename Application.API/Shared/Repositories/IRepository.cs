@@ -5,11 +5,11 @@ namespace Application.API.Interfaces.Repositories
 {
     public interface IRepository<T> where T: class
     {
-        Task<bool> DeleteAsync(string id);
+        Task<bool> DeleteAsync(int  id);
 
         Task<IEnumerable<T>> GetAllAsync();
 
-        Task<T> GetByIdAsync(string id);
+        Task<T> GetByIdAsync(int  id);
 
         Task<T> InsertAsync(T entity);
 

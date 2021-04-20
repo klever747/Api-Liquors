@@ -9,21 +9,14 @@ namespace Application.API.DTOs
 {
     public class UpdateUserDTO
     {
-        [Required]
+        public int CiUser { set; get; }
         public string PictureUser { set; get; }
-        [Required]
         public string DisplaynameUser { set; get; }
-        [Required]
         public string EmailUser { set; get; }
-        [Required]
         public string PasswordUser { set; get; }
-        [Required]
         public string PhoneUser { set; get; }
-        [Required]
         public string AddessUser { set; get; }
-        [Required]
         public DateTime DateBirthUser { set; get; }
-        [Required]
         public int Status { set; get; }
     }
 }

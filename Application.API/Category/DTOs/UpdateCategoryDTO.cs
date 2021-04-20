@@ -9,7 +9,7 @@ namespace Application.API.DTOs
 {
     public class UpdateCategoryDTO
     {
-        [Required]
+
         public int IdCategory { set; get; }
         public string NameCategory { set; get; }
         public string ImageCategory { set; get; }
