@@ -1,4 +1,6 @@
 ﻿using Application.API.Interfaces.Repositories;
+using Application.API.Repositories;
+using Application.API.Services;
 using Infrastructure.API.Contexts;
 using Infrastructure.API.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -26,7 +28,8 @@ namespace Infrastructure.API
             services.AddTransient<IProveedorRepository, ProveedorRepository>();
             services.AddTransient<ISalesRepository, SalesRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
-
+            services.AddTransient<ISecurityService, SecurityService>();
+            services.AddTransient<ISecurityRepository, SecurityRepository>();
         }
     }
 }

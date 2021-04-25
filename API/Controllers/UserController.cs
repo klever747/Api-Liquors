@@ -1,6 +1,8 @@
 ﻿using Application.API.DTOs;
 using Application.API.Interfaces.Repositories;
 using Domain.Entities;
+using Domain.Enum;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,6 +12,7 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
+   // [Authorize(Roles =nameof(RoleType.Administrator))]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : BaseApiController

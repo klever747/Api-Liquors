@@ -1,4 +1,7 @@
-﻿namespace Application.API.Interfaces.Repositories
+﻿using Infrastructure.API.Repositories;
+using System.Threading.Tasks;
+
+namespace Application.API.Interfaces.Repositories
 {
     public interface IUnitOfWork
     {
@@ -9,6 +12,7 @@
         IProductRepository ProductRepository { get; }
         IProveedorRepository ProveedorRepository { get; }
         ISalesRepository SalesRepository { get; }
-       
-     }
+        ISecurityRepository SecurityRepository { get; }
+
+    }
 }

@@ -14,5 +14,6 @@ namespace Application.API.Interfaces.Repositories
         Task<T> InsertAsync(T entity);
 
         Task<bool> UpdateAsync(T entity);
+        Task SaveChangesAsync();
     }
 }

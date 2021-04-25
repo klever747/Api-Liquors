@@ -7,7 +7,7 @@ namespace Domain.Entities
     public abstract class BaseEntity
     {
         #region Properties
-        public String Id { get; set; }
+        public int Id { get; set; }
         #endregion
     }
 }

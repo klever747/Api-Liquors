@@ -14,9 +14,11 @@ namespace Infrastructure.API.Contexts
         public DbSet<Proveedor> Proveedores { get; set; }
         public DbSet<Sales> Sales { get; set; }
         public DbSet<User> Users { get; set; }
+
+        public DbSet<Security> Securities { get; set; }
         #endregion
         #region Constructor
-        
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }

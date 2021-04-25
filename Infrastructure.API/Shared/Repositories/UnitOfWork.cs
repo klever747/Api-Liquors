@@ -1,8 +1,5 @@
 ﻿using Application.API.Interfaces.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
 using System.Threading.Tasks;
 
 namespace Infrastructure.API.Repositories
@@ -17,12 +14,15 @@ namespace Infrastructure.API.Repositories
         public IOrderRepository OrderRepository { get; set; }
         public IClientRepository ClientRepository { get; set; }
         public ICategoryRepository CategoryRepository { get; set; }
+        public ISecurityRepository SecurityRepository { get; set; }
+        
         #endregion
         #region Constructors
         public UnitOfWork(IUserRepository userRepository,
             ISalesRepository salesRepository, IProveedorRepository proveedorRepository,
             IProductRepository productRepository, IOrderRepository orderRepository,
-            IClientRepository clientRepository,ICategoryRepository categoryRepository)
+            IClientRepository clientRepository,ICategoryRepository categoryRepository, 
+            ISecurityRepository securityRepository)
         {
             UserRepository = userRepository;
             SalesRepository = salesRepository;
@@ -31,6 +31,8 @@ namespace Infrastructure.API.Repositories
             OrderRepository = orderRepository;
             ClientRepository = clientRepository;
             CategoryRepository = categoryRepository;
+            SecurityRepository = securityRepository;
+
         }
         #endregion
 
