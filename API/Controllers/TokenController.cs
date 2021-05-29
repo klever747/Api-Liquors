@@ -2,6 +2,7 @@
 using Application.API.Repositories;
 using Application.API.Services;
 using Domain.Entities;
+using Infrastructure.API.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -22,10 +23,12 @@ namespace API.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly ISecurityService _securityService;
-        public TokenController(IConfiguration configuration,ISecurityService securityService)
+        private readonly IPasswordHasher _passwordHasher;
+        public TokenController(IConfiguration configuration,ISecurityService securityService, IPasswordHasher passwordHasher)
         {
             _configuration = configuration;
             _securityService = securityService;
+            _passwordHasher = passwordHasher;
         }
         [HttpPost]
         public async Task<IActionResult> Authentication(UserLogin login)
@@ -42,7 +45,8 @@ namespace API.Controllers
         private async Task<(bool,Security)> IsValidateUser(UserLogin login)
         {
             var user = await _securityService.GetLoginByCredentials(login);
-            return (user != null, user ); 
+            var isValid = _passwordHasher.Check(user.Passwordu, login.Password);
+            return (isValid, user ); 
         } 
         private string GenerateToken(Security security)
         {

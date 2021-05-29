@@ -1,4 +1,5 @@
 using Infrastructure.API;
+using Infrastructure.API.Options;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -44,8 +45,8 @@ namespace API
             app.UseSwagger();
             app.UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Api V1");
-                options.RoutePrefix = string.Empty;
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "API");
+               // options.RoutePrefix = string.Empty;
             });
 
             app.UseHttpsRedirection();
@@ -66,6 +67,8 @@ namespace API
                 options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
             });
 
+            services.Configure<PasswordOptions>(Configuration.GetSection("PasswordOptions"));
+             
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });

@@ -2,7 +2,9 @@
 using Application.API.Repositories;
 using Application.API.Services;
 using Infrastructure.API.Contexts;
+using Infrastructure.API.Interfaces;
 using Infrastructure.API.Repositories;
+using Infrastructure.API.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,6 +32,7 @@ namespace Infrastructure.API
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<ISecurityService, SecurityService>();
             services.AddTransient<ISecurityRepository, SecurityRepository>();
+            services.AddSingleton<IPasswordHasher, PasswordService>();
         }
     }
 }

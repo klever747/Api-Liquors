@@ -13,7 +13,7 @@ namespace Infrastructure.API.Repositories
 
         public async Task<Security> GetLoginByCredentials(UserLogin login)
         {
-            return await _context.Securities.FirstOrDefaultAsync(x => x.Users == login.User && x.Passwordu == login.Password);
+            return await _context.Securities.FirstOrDefaultAsync(x => x.Users == login.User);
         }
     }
 }

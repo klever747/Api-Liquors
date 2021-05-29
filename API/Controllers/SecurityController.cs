@@ -3,6 +3,7 @@ using Application.API.Interfaces.Repositories;
 using Application.API.Repositories;
 using Domain.Entities;
 using Domain.Enum;
+using Infrastructure.API.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,17 +14,18 @@ using System.Threading.Tasks;
 
 namespace API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class SecurityController : BaseApiController
     {
         private readonly ISecurityService _securityService;
-
+        private readonly IPasswordHasher _passwordHasher;
         #region Constructor
-        public SecurityController(IUnitOfWork unitOfWork, ISecurityService securityService) : base(unitOfWork)
+        public SecurityController(IUnitOfWork unitOfWork, ISecurityService securityService, IPasswordHasher passwordHasher) : base(unitOfWork)
         {
             _securityService = securityService;
+            _passwordHasher = passwordHasher;
         }
         #endregion
         #region Endpoints
@@ -43,6 +45,7 @@ namespace API.Controllers
                     (RoleType)securityDTO.Roleu
                     
                 );
+            security.Passwordu = _passwordHasher.Hash(security.Passwordu);
             //await _securityService.RegisterUser(security);
             var newSecurity = await _unitOfWork.SecurityRepository.InsertAsync(security);
             if (newSecurity is null)
